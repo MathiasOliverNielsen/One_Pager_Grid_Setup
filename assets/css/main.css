@@ -1,34 +1,89 @@
 @import url(reset.css);
+@import url(Full-Page_Grid-Areas.css);
+/* Standard Grid Template */
 :root {
-  --primary-color: #333;
-  --secondary-color: #f4f4f4;
-  --background-color: #d3d3d3;
-  --border-color: #ccc;
-  --hover-color: #444;
-  --active-color: #222;
-  --focus-color: #444;
-  --button-color: #4caf50;
-  --button-hover-color: #45a049;
-  --valid-color: green;
-  --invalid-color: red;
+  --header-bg: #c86262;
+  --nav-bg: #e79687;
+  --main-bg: #4d8ac7;
+  --footer-bg: #13131a;
+  --text-light: #fff;
+  --full-site-margin: 0.5rem;
 }
-/* #region Global Styles */
+
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: var(--secondary-color);
-  color: black;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin: var(--full-site-margin);
+}
+
+header {
+  grid-area: header;
+  background-color: var(--header-bg);
+  color: var(--text-light);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+nav {
+  grid-area: nav;
+  background-color: var(--nav-bg);
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  grid-area: main;
+  background-color: var(--main-bg);
+  color: var(--text-light);
+  padding: 2rem 1rem;
+}
+
+footer {
+  grid-area: footer;
+  background-color: var(--footer-bg);
+  color: var(--text-light);
+  padding: 1rem;
+  text-align: center;
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--primary-color);
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  margin-bottom: 1rem;
+h2 {
+  margin-bottom: 0.5rem;
 }
-/* #endregion */
+
+section {
+  margin-bottom: 2rem;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 768px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main main"
+      "footer footer";
+    grid-template-columns: 1fr 1fr;
+    margin: var(--full-site-margin);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main main"
+      "footer footer";
+    grid-template-columns: repeat(2, 1fr);
+    margin: var(--full-site-margin);
+  }
+}
